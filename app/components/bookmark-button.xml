@@ -1,0 +1,4 @@
+<Button xmlns="http://schemas.nativescript.org/tns.xsd"
+        text="{{ isBookmarked ? '★' : '☆' }}"
+        tap="{{ toggleBookmark }}"
+        class="{{ isBookmarked ? 'text-yellow-500' : 'text-gray-400' }} text-xl p-2" />

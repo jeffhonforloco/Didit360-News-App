@@ -1,0 +1,41 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Search News">
+        <NavigationButton visibility="visible" />
+    </ActionBar>
+
+    <GridLayout rows="auto, *">
+        <!-- Search Bar -->
+        <GridLayout row="0" columns="*, auto" class="p-4 bg-white border-b border-gray-200">
+            <TextField col="0" text="{{ searchQuery }}" 
+                      hint="Search news articles..."
+                      textChange="{{ onSearchTextChanged }}"
+                      class="input" />
+            <Button col="1" text="&#x1F50D;" class="ml-2 -primary -rounded-lg"
+                    tap="{{ onSearch }}" visibility="{{ searchQuery ? 'visible' : 'collapsed' }}" />
+        </GridLayout>
+
+        <!-- Results or Empty State -->
+        <GridLayout row="1">
+            <!-- Loading State -->
+            <ActivityIndicator busy="{{ isLoading }}" 
+                             visibility="{{ isLoading ? 'visible' : 'collapsed' }}" />
+
+            <!-- Results List -->
+            <ListView items="{{ searchResults }}" itemTap="{{ onArticleTap }}"
+                     visibility="{{ !isLoading && searchResults.length > 0 ? 'visible' : 'collapsed' }}">
+                <ListView.itemTemplate>
+                    <Include src="~/components/article-card" />
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Empty State -->
+            <StackLayout visibility="{{ !isLoading && searchResults.length === 0 ? 'visible' : 'collapsed' }}"
+                         class="p-4 text-center">
+                <Label text="{{ searchQuery ? '🔍 No results found' : '🔍 Start searching' }}"
+                       class="text-lg text-gray-600" />
+                <Label text="{{ searchQuery ? 'Try different keywords' : 'Enter keywords to search news' }}"
+                       class="text-sm text-gray-500 mt-2" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

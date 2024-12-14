@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="DidIt360 News" class="action-bar">
+        <ActionItem ios.position="right" android.position="actionBar" 
+                   tap="onRefresh" ios.systemIcon="16" android.systemIcon="ic_menu_refresh" />
+    </ActionBar>
+    
+    <GridLayout rows="auto, *">
+        <!-- Loading Indicator -->
+        <ActivityIndicator busy="{{ isLoading }}" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" 
+                         row="0" horizontalAlignment="center" verticalAlignment="center" />
+        
+        <!-- Error Message -->
+        <StackLayout row="0" class="p-2" visibility="{{ error ? 'visible' : 'collapsed' }}">
+            <Label text="{{ error }}" class="text-danger text-center" textWrap="true" />
+            <Button text="Retry" tap="onRetry" class="-primary -rounded-lg" />
+        </StackLayout>
+
+        <!-- Content -->
+        <TabView row="1" selectedTabTextColor="#4CAF50" tabTextFontSize="16" 
+                visibility="{{ !isLoading && !error ? 'visible' : 'collapsed' }}">
+            <TabView.items>
+                <TabViewItem title="Trending">
+                    <TabViewItem.view>
+                        <ListView items="{{ trendingArticles }}" itemTap="onArticleTap">
+                            <ListView.itemTemplate>
+                                <Include src="~/components/article-card" />
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+                
+                <TabViewItem title="Celebrity">
+                    <TabViewItem.view>
+                        <ListView items="{{ celebrityArticles }}" itemTap="onArticleTap">
+                            <ListView.itemTemplate>
+                                <Include src="~/components/article-card" />
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+                
+                <TabViewItem title="Entertainment">
+                    <TabViewItem.view>
+                        <ListView items="{{ entertainmentArticles }}" itemTap="onArticleTap">
+                            <ListView.itemTemplate>
+                                <Include src="~/components/article-card" />
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </TabViewItem.view>
+                </TabViewItem>
+            </TabView.items>
+        </TabView>
+    </GridLayout>
+</Page>

@@ -1,0 +1,27 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Bookmarks">
+        <NavigationButton visibility="visible" />
+    </ActionBar>
+
+    <GridLayout>
+        <!-- Bookmarks List -->
+        <ListView items="{{ bookmarks }}" itemTap="{{ onArticleTap }}"
+                 visibility="{{ bookmarks.length > 0 ? 'visible' : 'collapsed' }}">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto" class="article-card">
+                    <Include src="~/components/article-card" col="0" />
+                    <Button text="&#x2715;" tap="{{ $parent.onRemoveBookmark }}"
+                            col="1" class="text-red-500 p-2" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <!-- Empty State -->
+        <StackLayout visibility="{{ bookmarks.length === 0 ? 'visible' : 'collapsed' }}"
+                     class="p-4 text-center">
+            <Label text="📚" class="text-4xl" />
+            <Label text="No bookmarks yet" class="text-lg text-gray-600 mt-2" />
+            <Label text="Save articles to read later" class="text-sm text-gray-500 mt-1" />
+        </StackLayout>
+    </GridLayout>
+</Page>

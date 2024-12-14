@@ -1,0 +1,42 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Automation Settings" class="action-bar">
+        <NavigationButton visibility="visible" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Label text="Update Interval" class="text-lg font-bold mb-2" />
+            <TextField text="{{ updateInterval }}" keyboardType="number" 
+                      hint="Enter minutes" class="input mb-4" />
+
+            <GridLayout columns="*, *" class="mb-4">
+                <Button text="Start Automation" tap="onStartAutomation" 
+                        col="0" class="-primary -rounded-lg m-1" />
+                <Button text="Stop Automation" tap="onStopAutomation" 
+                        col="1" class="-outline -rounded-lg m-1" />
+            </GridLayout>
+
+            <Label text="Category Training" class="text-lg font-bold mb-2" />
+            <GridLayout rows="auto, auto" columns="*, auto" class="mb-4">
+                <TextField text="{{ newPhrase }}" hint="Enter training phrase" 
+                          row="0" col="0" class="input" />
+                <Button text="Add" tap="onAddPhrase" row="0" col="1" 
+                        class="-primary -rounded-lg ml-2" />
+                
+                <DropDown items="{{ categories }}" selectedIndex="{{ selectedCategoryIndex }}"
+                         row="1" col="0" class="mt-2" />
+            </GridLayout>
+
+            <Label text="Training Data" class="text-lg font-bold mb-2" />
+            <ListView items="{{ trainingPhrases }}" class="list-group">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" class="list-group-item">
+                        <Label text="{{ phrase }}" col="0" textWrap="true" />
+                        <Button text="&#x2715;" tap="onRemovePhrase" col="1" 
+                                class="text-red-500" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

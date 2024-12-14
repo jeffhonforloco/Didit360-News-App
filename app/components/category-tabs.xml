@@ -1,0 +1,13 @@
+<GridLayout rows="auto" columns="*" class="category-tabs p-2 bg-white">
+    <TabStrip>
+        <TabStripItem>
+            <Label text="Trending" class="text-lg" />
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Celebrity" class="text-lg" />
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Entertainment" class="text-lg" />
+        </TabStripItem>
+    </TabStrip>
+</GridLayout>

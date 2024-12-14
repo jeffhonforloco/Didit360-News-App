@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.article-card {
+    elevation: 2;
+    margin: 8 16;
+}
+
+.article-card:active {
+    elevation: 4;
+}
+
+.category-tabs TabStripItem:active {
+    background-color: #E5E7EB;
+}
+
+.category-tabs TabStripItem.selected {
+    border-bottom-width: 2;
+    border-color: #10B981;
+}
+
+.refresh-button {
+    font-size: 24;
+    padding: 8;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.refresh-button:active {
+    background-color: #E5E7EB;
+}
+
+.loader {
+    color: #10B981;
+}
+
+ActionBar {
+    background-color: #10B981;
+    color: white;
+}
+
+.error-state Button {
+    background-color: #10B981;
+    color: white;
+    font-weight: bold;
+    padding: 12 24;
+}
+
+.error-state Button:active {
+    background-color: #059669;
+}

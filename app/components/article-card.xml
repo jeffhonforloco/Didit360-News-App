@@ -1,0 +1,18 @@
+<GridLayout xmlns="http://schemas.nativescript.org/tns.xsd" rows="auto, auto" columns="100, *" class="article-card p-4 bg-white rounded-lg">
+    <!-- Article Image -->
+    <Image row="0" col="0" rowSpan="2" src="{{ imageUrl }}" width="90" height="90" 
+           class="rounded-lg" stretch="aspectFill" />
+    
+    <!-- Article Content -->
+    <StackLayout row="0" col="1" class="ml-3">
+        <Label text="{{ title }}" class="font-bold text-base" textWrap="true" />
+        <Label text="{{ description }}" class="text-sm text-gray-600 mt-1" textWrap="true" 
+               maxLines="2" />
+    </StackLayout>
+    
+    <!-- Article Metadata -->
+    <GridLayout row="1" col="1" columns="auto, *, auto" class="ml-3 mt-2">
+        <Label col="0" text="{{ source.name }}" class="text-xs text-gray-500" />
+        <Label col="2" text="{{ readTime }} min read" class="text-xs text-gray-500" />
+    </GridLayout>
+</GridLayout>

@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="{{ article.category.name }}" class="action-bar">
+        <NavigationButton visibility="visible" />
+        <ActionItem ios.position="right" android.position="actionBar"
+                   tap="onShare" ios.systemIcon="9" android.systemIcon="ic_menu_share" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Image src="{{ article.imageUrl }}" class="w-full h-48 rounded-lg" stretch="aspectFill" />
+            <Label text="{{ article.title }}" class="text-2xl font-bold mt-4" textWrap="true" />
+            
+            <GridLayout columns="auto,*,auto" class="mt-2">
+                <Label col="0" text="{{ article.source.name }}" class="text-sm text-gray-600" />
+                <Label col="2" text="{{ article.readTime }} min read" class="text-sm text-gray-600" />
+            </GridLayout>
+
+            <Label text="{{ article.description }}" class="text-base mt-4" textWrap="true" />
+            <Label text="{{ article.content }}" class="text-base mt-4" textWrap="true" />
+            
+            <Button text="Read Full Article" tap="onReadFullArticle" class="-primary -rounded-lg mt-4" />
+        </StackLayout>
+    </ScrollView>
+</Page>

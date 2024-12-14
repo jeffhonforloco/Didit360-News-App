@@ -1,0 +1,7 @@
+<GridLayout xmlns="http://schemas.nativescript.org/tns.xsd" rows="auto, *">
+    <ListView items="{{ articles }}" itemTap="onArticleTap" class="article-list">
+        <ListView.itemTemplate>
+            <Include src="~/components/article-card" />
+        </ListView.itemTemplate>
+    </ListView>
+</GridLayout>

@@ -1,0 +1,4 @@
+<GridLayout rows="auto" columns="*, auto" class="header p-4 bg-white border-b border-gray-200">
+    <Label col="0" text="DidIt360 News" class="text-2xl font-bold text-green-600" />
+    <Button col="1" text="&#x21bb;" class="refresh-button text-xl" tap="onRefresh" />
+</GridLayout>

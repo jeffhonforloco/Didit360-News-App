@@ -1,0 +1,5 @@
+<StackLayout class="loading-container p-4">
+    <ActivityIndicator busy="{{ isLoading }}" class="loader" />
+    <Label text="Loading news..." class="text-gray-600 text-center mt-2" 
+           visibility="{{ isLoading ? 'visible' : 'collapsed' }}" />
+</StackLayout>

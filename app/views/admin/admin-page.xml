@@ -1,0 +1,27 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="Admin Control Panel" class="action-bar">
+        <NavigationButton visibility="visible" />
+    </ActionBar>
+
+    <GridLayout rows="auto, *">
+        <!-- Category Filter -->
+        <StackLayout row="0" class="p-4 bg-white border-b border-gray-200">
+            <Label text="Filter by Category" class="text-lg font-bold mb-2" />
+            <SegmentedBar items="{{ categories }}" selectedIndex="{{ selectedCategoryIndex }}" />
+        </StackLayout>
+
+        <!-- Articles List -->
+        <ListView row="1" items="{{ articles }}" itemTap="onArticleTap">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *, auto" class="p-4 border-b border-gray-200">
+                    <Image col="0" src="{{ imageUrl }}" width="60" height="60" class="rounded-lg" stretch="aspectFill" />
+                    <StackLayout col="1" class="ml-3">
+                        <Label text="{{ title }}" class="font-bold" textWrap="true" />
+                        <Label text="{{ source.name }}" class="text-sm text-gray-600" />
+                    </StackLayout>
+                    <Switch col="2" checked="{{ isCurated }}" tap="{{ toggleCuration }}" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>
